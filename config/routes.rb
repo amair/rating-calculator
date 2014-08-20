@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+    namespace :v1 do
+      
+      devise_for :users, only: []
+      
+      devise_scope :user do 
+        post   'sign_in'  => 'sessions#create'
+        delete 'sign_out' => 'sessions#destroy'
+      end
+    
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

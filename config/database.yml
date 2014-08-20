@@ -21,6 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
+
 development:
   <<: *default
   database: rating-calculator_development
@@ -29,10 +30,12 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: rating-calculator
+  username: postgres
 
   # The password associated with the postgres role (username).
-  #password:
+  password: postgres
+
+  host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,6 +61,13 @@ development:
 test:
   <<: *default
   database: rating-calculator_test
+
+  username: postgres
+
+  # The password associated with the postgres role (username).
+  password: postgres
+
+  host: localhost
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
